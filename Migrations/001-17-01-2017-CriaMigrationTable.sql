@@ -16,7 +16,6 @@ CREATE TABLE "public"."migration" (
 	"inserted_at" timestamp(6) NOT NULL
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."migration" OWNER TO "pg_aventurebox";
 
 -- ----------------------------
 --  Primary key structure for table migration
