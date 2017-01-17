@@ -1,0 +1,12 @@
+1) Criar Banco de Dados "aventurebox"
+
+2) Criar usuário "pg_aventurebox"
+
+3) Restaurar o dump da base inicial
+- Baixar Arquivo: https://www.dropbox.com/s/d8rm0vhvfifznvc/aventurebox-inicial.sql?dl=0
+- Executar no Terminal: psql.exe aventurebox < "C:\xampp\htdocs\aventurebox\aventurebox-inicial.sql" postgres
+
+4) Rodar última compilação da pasta migrations + as migrations seguintes.
+
+Arquivos uf para criar ambiente local (compatível com a versão inicial do banco de dados) disponível em:
+https://www.dropbox.com/s/a7wpjdzrsg9q5w6/uf.zip?dl=0
