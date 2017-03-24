@@ -1,7 +1,7 @@
 /*
  Migration  : 002
  Developer  : Paulo Moura
- Data       : 21-02-2017
+ Data       : 17-03-2017
  Description: Create Table Refuse Sugestion
 */
 
@@ -20,4 +20,12 @@ grant update on all tables in schema public to pg_aventurebox;
 grant delete on all tables in schema public to pg_aventurebox;
 grant all privileges on all sequences in schema public to pg_aventurebox;
 
-INSERT INTO migration VALUES(2,'Cria Tabela de Sugestões de Contato Recusadas','2017-02-21', now());
+ALTER TABLE tracklog ALTER COLUMN file TYPE text;
+ALTER TABLE tracklog_log ALTER COLUMN file TYPE text;
+
+ALTER TABLE "public"."adventure"
+ALTER COLUMN "rox" SET DEFAULT 0;
+
+INSERT INTO migration VALUES(2,'Cria Tabela de Sugestões de Contato Recusados','2017-03-17', now());
+
+
