@@ -13,4 +13,4 @@ grant update on all tables in schema public to pg_aventurebox;
 grant delete on all tables in schema public to pg_aventurebox;
 grant all privileges on all sequences in schema public to pg_aventurebox;
 
-INSERT INTO migration VALUES(5,'Altera tabela adventure adicionando campo do_not_list','2017-11-11', now());
+INSERT INTO migration VALUES(6,'Altera tabela adventure adicionando campo do_not_list','2017-11-11', now());
