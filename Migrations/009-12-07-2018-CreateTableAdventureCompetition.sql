@@ -14,4 +14,10 @@ alter table adventure_competition add foreign key(id_adventure) references adven
 alter table adventure_competition add foreign key(id_user) references user_login(id);
 alter table adventure_competition add unique(id_adventure);
 
+grant select on all tables in schema public to pg_aventurebox;
+grant insert on all tables in schema public to pg_aventurebox;
+grant update on all tables in schema public to pg_aventurebox;
+grant delete on all tables in schema public to pg_aventurebox;
+grant all privileges on all sequences in schema public to pg_aventurebox;
+
 INSERT INTO migration VALUES(9,'Cria tabela adventure_competition','2018-07-12', now());
