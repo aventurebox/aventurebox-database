@@ -8,10 +8,10 @@
 CREATE TABLE adventure_competition(
 id_adventure int not null,
 id_user int not null,
-date timestamp default CURRENT_TIMESTAMP 
+date timestamp default CURRENT_TIMESTAMP,
+type Integer DEFAULT 1 NOT NULL
 );
-alter table adventure_competition add foreign key(id_adventure) references adventure(id);
-alter table adventure_competition add foreign key(id_user) references user_login(id);
+
 alter table adventure_competition add unique(id_adventure);
 
 grant select on all tables in schema public to pg_aventurebox;
