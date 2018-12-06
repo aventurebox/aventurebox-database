@@ -1,5 +1,5 @@
 /*
- Migration  : 012 Developer  : Paulo Moura
+ Migration  : 011 Developer  : Paulo Moura
  Data       : 01-11-2018
  Description: AlterTableTracklog
 */
@@ -18,4 +18,4 @@ grant update on all tables in schema public to pg_aventurebox;
 grant delete on all tables in schema public to pg_aventurebox;
 grant all privileges on all sequences in schema public to pg_aventurebox;
 
-INSERT INTO migration VALUES(12,'Altera tabela tracklog','2018-11-01', now());
+INSERT INTO migration VALUES(11,'Altera tabela tracklog','2018-11-01', now());
