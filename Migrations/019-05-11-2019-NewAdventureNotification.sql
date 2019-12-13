@@ -8,10 +8,18 @@ INSERT INTO notification_type(name) VALUES ('new_adventure');
 
 CREATE TABLE user_muted( id_user INTEGER NOT NULL, id_user_muted INTEGER NOT NULL, date TIMESTAMP NOT NULL DEFAULT now(), UNIQUE(id_user, id_user_muted), FOREIGN KEY(id_user) REFERENCES user_login(id), FOREIGN KEY(id_user_muted) REFERENCES user_login(id) );
 
+-- NINJA
 grant select on all tables in schema public to pg_aventurebox;
 grant insert on all tables in schema public to pg_aventurebox;
 grant update on all tables in schema public to pg_aventurebox;
 grant delete on all tables in schema public to pg_aventurebox;
 grant all privileges on all sequences in schema public to pg_aventurebox;
+
+-- PRODUCTION
+grant select on all tables in schema public to "user-production";
+grant insert on all tables in schema public to "user-production";
+grant update on all tables in schema public to "user-production";
+grant delete on all tables in schema public to "user-production";
+grant all privileges on all sequences in schema public to "user-production";
 
 INSERT INTO migration VALUES(19,'Cria sistema para notificações de nova aventura e desativação de notificações no app','2019-11-05', now());
