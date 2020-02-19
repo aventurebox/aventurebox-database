@@ -35,7 +35,7 @@ CREATE TABLE post_log(
 	content TEXT,
 	dt_publication TIMESTAMP,
 	dt_save TIMESTAMP,
-	picutre VARCHAR(20),
+	picture VARCHAR(20),
 	panoramic_photo VARCHAR(20),
 	published BOOLEAN,
 	views INTEGER,
