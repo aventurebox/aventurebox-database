@@ -15,7 +15,7 @@ CREATE FUNCTION fn_post_featured_delete()
 AS $BODY$
 BEGIN
 INSERT INTO post_featured_log(type_log, dt_log, id_post, order_by)
-	VALUES (3, NOW(), old.id, old.order_by);
+	VALUES (3, NOW(), old.id_post, old.order_by);
 	return old;
    END; 
 	$BODY$;
