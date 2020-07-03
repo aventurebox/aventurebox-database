@@ -98,8 +98,8 @@ CREATE SEQUENCE user_profile_id_seq OWNED BY user_profile.id;
 SELECT setval('user_profile_id_seq', coalesce(max(id), 0) + 1, false) FROM user_profile;
 ALTER TABLE user_profile ALTER COLUMN id SET DEFAULT nextval('user_profile_id_seq'); 
 	-- CRIA UM CAMPO PARA O TIPO DE PERFIL (MEMBRO/PAGINA)
-ALTER TABLE user_profile ADD COLUMN user_profile_type INT NOT NULL DEFAULT 1;
-ALTER TABLE user_profile ALTER COLUMN user_profile_type DROP DEFAULT;
+ALTER TABLE user_profile ADD COLUMN type INT NOT NULL DEFAULT 1;
+ALTER TABLE user_profile ALTER COLUMN type DROP DEFAULT;
 
 	-- CRIA OS CAMPOS QUE SERAO TRANSFERIDOS DA TABELA USER_LOGIN
 ALTER TABLE user_profile ADD COLUMN user_ VARCHAR(40) NOT NULL DEFAULT '';
@@ -139,9 +139,9 @@ ALTER TABLE user_login DROP COLUMN user_, DROP COLUMN inactive;
 
 -- ALTERA AS TABELAS, TRIGGERS E FUNCTIONS DE LOG
 ALTER TABLE user_profile_log ALTER COLUMN name DROP NOT NULL, ALTER COLUMN picture DROP NOT NULL, ALTER COLUMN birth DROP NOT NULL, ALTER COLUMN genus DROP NOT NULL, ALTER COLUMN dt_register DROP NOT NULL, ALTER COLUMN token DROP NOT NULL, ALTER COLUMN language DROP NOT NULL, ALTER COLUMN country DROP NOT NULL, ALTER COLUMN time_zone DROP NOT NULL;
-ALTER TABLE user_profile_log ADD COLUMN id_user_login INTEGER, ADD COLUMN user_profile_type INTEGER, ADD COLUMN user_ VARCHAR(40), ADD COLUMN inactive BOOLEAN, ADD COLUMN suspended BOOLEAN;
+ALTER TABLE user_profile_log ADD COLUMN id_user_login INTEGER, ADD COLUMN type INTEGER, ADD COLUMN user_ VARCHAR(40), ADD COLUMN inactive BOOLEAN, ADD COLUMN suspended BOOLEAN, ADD COLUMN panoramic_photo VARCHAR(20), ADD COLUMN primary_tab INT;
 ALTER TABLE user_login_log ALTER COLUMN user_ DROP NOT NULL, ALTER COLUMN email DROP NOT NULL, ALTER COLUMN pass DROP NOT NULL, ALTER COLUMN inactive DROP NOT NULL;
-ALTER TABLE user_login_log ADD COLUMN genus CHAR(1), ADD COLUMN birth DATE, ADD COLUMN language INTEGER, ADD COLUMN country INTEGER, ADD COLUMN time_zone INTEGER, ADD COLUMN period_notification INTEGER, ADD COLUMN last_external_notification INTEGER, ADD COLUMN email_failed BOOLEAN,  ADD COLUMN notification_cancel_token VARCHAR(40), ADD COLUMN last_notification_id INTEGER;
+ALTER TABLE user_login_log ADD COLUMN genus CHAR(1), ADD COLUMN birth DATE, ADD COLUMN language INTEGER, ADD COLUMN country INTEGER, ADD COLUMN time_zone INTEGER, ADD COLUMN period_notification INTEGER, ADD COLUMN last_external_notification TIMESTAMP, ADD COLUMN email_failed BOOLEAN,  ADD COLUMN notification_cancel_token VARCHAR(40), ADD COLUMN last_notification_id INTEGER, ADD COLUMN suspended BOOLEAN, ADD COLUMN email_change_token VARCHAR(40), ADD COLUMN email_change_date DATE, ADD COLUMN email_change_new VARCHAR(60);
 
 DROP TRIGGER tg_user_profile_insert ON user_profile;
 DROP TRIGGER tg_user_profile_update ON user_profile;
@@ -155,8 +155,8 @@ CREATE FUNCTION fn_user_profile_insert()
 	VOLATILE NOT LEAKPROOF 
 AS $BODY$
 BEGIN
-INSERT INTO user_profile_log(type_log, data_log, id_user_profile, name, picture, dt_register, bio, website, location, token, panoramic_photo, primary_tab, id_user_login, user_profile_type, user_, inactive, suspended)
-	VALUES (1, NOW(), new.id, new.name, new.picture, new.dt_register, new.bio, new.website, new.location, new.token, new.panoramic_photo, new.primary_tab, new.id_user_login, new.user_profile_type, new.user_, new.inactive, new.suspended);
+INSERT INTO user_profile_log(type_log, data_log, id_user_profile, name, picture, dt_register, bio, website, location, token, panoramic_photo, primary_tab, id_user_login, type, user_, inactive, suspended)
+	VALUES (1, NOW(), new.id, new.name, new.picture, new.dt_register, new.bio, new.website, new.location, new.token, new.panoramic_photo, new.primary_tab, new.id_user_login, new.type, new.user_, new.inactive, new.suspended);
 	return new;
    END; 
 	$BODY$;
@@ -169,8 +169,8 @@ CREATE FUNCTION fn_user_profile_update()
 	VOLATILE NOT LEAKPROOF 
 AS $BODY$
 BEGIN
-INSERT INTO user_profile_log(type_log, data_log, id_user_profile, name, picture, dt_register, bio, website, location, token, panoramic_photo, primary_tab, id_user_login, user_profile_type, user_, inactive, suspended)
-	VALUES (2, NOW(), new.id, new.name, new.picture, new.dt_register, new.bio, new.website, new.location, new.token, new.panoramic_photo, new.primary_tab, new.id_user_login, new.user_profile_type, new.user_, new.inactive, new.suspended);
+INSERT INTO user_profile_log(type_log, data_log, id_user_profile, name, picture, dt_register, bio, website, location, token, panoramic_photo, primary_tab, id_user_login, type, user_, inactive, suspended)
+	VALUES (2, NOW(), new.id, new.name, new.picture, new.dt_register, new.bio, new.website, new.location, new.token, new.panoramic_photo, new.primary_tab, new.id_user_login, new.type, new.user_, new.inactive, new.suspended);
 	return new;
    END; 
 	$BODY$;
