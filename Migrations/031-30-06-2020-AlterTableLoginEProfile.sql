@@ -5,82 +5,83 @@
 */
 
 -- ALTER FOREIGN KEY NAS TABELAS PARA APONTAR PARA O USER_PROFILE;
+ALTER TABLE adventure DROP CONSTRAINT IF EXISTS adventure_id_user_fkey;
 ALTER TABLE adventure ADD CONSTRAINT adventure_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE adventure_comment DROP CONSTRAINT comment_id_user_fkey;
+ALTER TABLE adventure_comment DROP CONSTRAINT IF EXISTS comment_id_user_fkey;
 ALTER TABLE adventure_comment ADD CONSTRAINT adventure_comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE adventure_competition DROP CONSTRAINT adventure_competition_id_user_fkey;
+ALTER TABLE adventure_competition DROP CONSTRAINT IF EXISTS adventure_competition_id_user_fkey;
 ALTER TABLE adventure_competition ADD CONSTRAINT adventure_competition_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE adventure_complaint DROP CONSTRAINT adventure_complaint_id_user_fkey;
+ALTER TABLE adventure_complaint DROP CONSTRAINT IF EXISTS adventure_complaint_id_user_fkey;
 ALTER TABLE adventure_complaint ADD CONSTRAINT adventure_complaint_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE adventure_hide DROP CONSTRAINT adventure_hide_id_user_fkey;
+ALTER TABLE adventure_hide DROP CONSTRAINT IF EXISTS adventure_hide_id_user_fkey;
 ALTER TABLE adventure_hide ADD CONSTRAINT adventure_hide_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE adventure_participant DROP CONSTRAINT adventure_participant_id_user_fkey;
+ALTER TABLE adventure_participant DROP CONSTRAINT IF EXISTS adventure_participant_id_user_fkey;
 ALTER TABLE adventure_participant ADD CONSTRAINT adventure_participant_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE adventure_rox DROP CONSTRAINT rox_id_user_fkey;
+ALTER TABLE adventure_rox DROP CONSTRAINT IF EXISTS rox_id_user_fkey;
 ALTER TABLE adventure_rox ADD CONSTRAINT rox_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE concact_refuse DROP CONSTRAINT concact_refuse_id_user_fkey;
-ALTER TABLE concact_refuse DROP CONSTRAINT concact_refuse_id_user_fkey1;
-ALTER TABLE concact_refuse DROP CONSTRAINT concact_refuse_id_user_refused_fkey;
-ALTER TABLE concact_refuse DROP CONSTRAINT concact_refuse_id_user_refused_fkey1;
+ALTER TABLE concact_refuse DROP CONSTRAINT IF EXISTS concact_refuse_id_user_fkey;
+ALTER TABLE concact_refuse DROP CONSTRAINT IF EXISTS concact_refuse_id_user_fkey1;
+ALTER TABLE concact_refuse DROP CONSTRAINT IF EXISTS concact_refuse_id_user_refused_fkey;
+ALTER TABLE concact_refuse DROP CONSTRAINT IF EXISTS concact_refuse_id_user_refused_fkey1;
 ALTER TABLE concact_refuse ADD CONSTRAINT concact_refuse_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 ALTER TABLE concact_refuse ADD CONSTRAINT concact_refuse_id_user_refused_fkey FOREIGN KEY (id_user_refused) REFERENCES user_profile (id);
 
-ALTER TABLE contact DROP CONSTRAINT contact_id_user_guest_fkey;
-ALTER TABLE contact DROP CONSTRAINT contact_id_user_inviter_fkey;
+ALTER TABLE contact DROP CONSTRAINT IF EXISTS contact_id_user_guest_fkey;
+ALTER TABLE contact DROP CONSTRAINT IF EXISTS contact_id_user_inviter_fkey;
 ALTER TABLE contact ADD CONSTRAINT contact_id_user_follower_fkey FOREIGN KEY (id_user_follower) REFERENCES user_profile (id);
 ALTER TABLE contact ADD CONSTRAINT contact_id_user_following_fkey FOREIGN KEY (id_user_following) REFERENCES user_profile (id);
 
-ALTER TABLE email_invite DROP CONSTRAINT id_id_user_login;
+ALTER TABLE email_invite DROP CONSTRAINT IF EXISTS id_id_user_login;
 ALTER TABLE email_invite ADD CONSTRAINT email_invite_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE notification DROP CONSTRAINT notification_id_user_receiver_fkey;
-ALTER TABLE notification DROP CONSTRAINT notification_id_user_sender_fkey;
+ALTER TABLE notification DROP CONSTRAINT IF EXISTS notification_id_user_receiver_fkey;
+ALTER TABLE notification DROP CONSTRAINT IF EXISTS notification_id_user_sender_fkey;
 ALTER TABLE notification ADD CONSTRAINT notification_id_user_receiver_fkey FOREIGN KEY (id_user_receiver) REFERENCES user_profile (id);
 ALTER TABLE notification ADD CONSTRAINT notification_id_user_sender_fkey FOREIGN KEY (id_user_sender) REFERENCES user_profile (id);
 
-ALTER TABLE post DROP CONSTRAINT post_id_user_fkey;
+ALTER TABLE post DROP CONSTRAINT IF EXISTS post_id_user_fkey;
 ALTER TABLE post ADD CONSTRAINT post_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE post_comment DROP CONSTRAINT post_comment_id_user_fkey;
+ALTER TABLE post_comment DROP CONSTRAINT IF EXISTS post_comment_id_user_fkey;
 ALTER TABLE post_comment ADD CONSTRAINT post_comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE post_complaint DROP CONSTRAINT post_complaint_id_user_fkey;
+ALTER TABLE post_complaint DROP CONSTRAINT IF EXISTS post_complaint_id_user_fkey;
 ALTER TABLE post_complaint ADD CONSTRAINT post_complaint_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE post_hide DROP CONSTRAINT post_hide_id_user_fkey;
+ALTER TABLE post_hide DROP CONSTRAINT IF EXISTS post_hide_id_user_fkey;
 ALTER TABLE post_hide ADD CONSTRAINT post_hide_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE post_rox DROP CONSTRAINT post_rox_id_user_fkey;
+ALTER TABLE post_rox DROP CONSTRAINT IF EXISTS post_rox_id_user_fkey;
 ALTER TABLE post_rox ADD CONSTRAINT post_rox_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE session_app DROP CONSTRAINT session_app_id_user_fkey;
+ALTER TABLE session_app DROP CONSTRAINT IF EXISTS session_app_id_user_fkey;
 ALTER TABLE session_app ADD CONSTRAINT session_app_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE thing_rox DROP CONSTRAINT thing_rox_id_user_fkey;
+ALTER TABLE thing_rox DROP CONSTRAINT IF EXISTS thing_rox_id_user_fkey;
 ALTER TABLE thing_rox ADD CONSTRAINT thing_rox_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE user_blocked DROP CONSTRAINT user_blocked_id_user_blocked_fkey;
-ALTER TABLE user_blocked DROP CONSTRAINT user_blocked_id_user_fkey;
+ALTER TABLE user_blocked DROP CONSTRAINT IF EXISTS user_blocked_id_user_blocked_fkey;
+ALTER TABLE user_blocked DROP CONSTRAINT IF EXISTS user_blocked_id_user_fkey;
 ALTER TABLE user_blocked ADD CONSTRAINT user_blocked_id_user_blocked_fkey FOREIGN KEY (id_user_blocked) REFERENCES user_profile (id);
 ALTER TABLE user_blocked ADD CONSTRAINT user_blocked_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE user_complaint DROP CONSTRAINT user_complaint_id_user_complaint_fkey;
-ALTER TABLE user_complaint DROP CONSTRAINT user_complaint_id_user_fkey;
+ALTER TABLE user_complaint DROP CONSTRAINT IF EXISTS user_complaint_id_user_complaint_fkey;
+ALTER TABLE user_complaint DROP CONSTRAINT IF EXISTS user_complaint_id_user_fkey;
 ALTER TABLE user_complaint ADD CONSTRAINT user_complaint_id_user_complaint_fkey FOREIGN KEY (id_user_complaint) REFERENCES user_profile (id);
 ALTER TABLE user_complaint ADD CONSTRAINT user_complaint_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE user_featured DROP CONSTRAINT user_featured_id_user_fkey;
+ALTER TABLE user_featured DROP CONSTRAINT IF EXISTS user_featured_id_user_fkey;
 ALTER TABLE user_featured ADD CONSTRAINT user_featured_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 
-ALTER TABLE user_muted DROP CONSTRAINT user_muted_id_user_fkey;
-ALTER TABLE user_muted DROP CONSTRAINT user_muted_id_user_muted_fkey;
+ALTER TABLE user_muted DROP CONSTRAINT IF EXISTS user_muted_id_user_fkey;
+ALTER TABLE user_muted DROP CONSTRAINT IF EXISTS user_muted_id_user_muted_fkey;
 ALTER TABLE user_muted ADD CONSTRAINT user_muted_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id);
 ALTER TABLE user_muted ADD CONSTRAINT user_muted_id_user_muted_fkey FOREIGN KEY (id_user_muted) REFERENCES user_profile (id);
 
@@ -88,13 +89,15 @@ ALTER TABLE user_muted ADD CONSTRAINT user_muted_id_user_muted_fkey FOREIGN KEY 
 	-- CRIA O CAMPO PARA O ID_USER_LOGIN (DONO DO PROFILE)
 ALTER TABLE user_profile ADD COLUMN id_user_login INT NOT NULL DEFAULT 0;
 ALTER TABLE user_profile ALTER COLUMN id_user_login DROP DEFAULT;
-ALTER TABLE user_profile DROP CONSTRAINT user_profile_id_fkey;
+ALTER TABLE user_profile DROP CONSTRAINT IF EXISTS user_profile_id_fkey;
 BEGIN TRANSACTION;
 UPDATE user_profile SET id_user_login = user_profile.id;
 END TRANSACTION;
 ALTER TABLE user_profile ADD CONSTRAINT user_profile_id_user_login_fkey FOREIGN KEY (id_user_login) REFERENCES user_login (id);
     -- TORNA O ID AUTO INCREMENT
-CREATE SEQUENCE user_profile_id_seq OWNED BY user_profile.id;
+CREATE SEQUENCE IF NOT EXISTS user_profile_id_seq;
+ALTER SEQUENCE user_profile_id_seq OWNER TO "aventurebox";
+ALTER SEQUENCE user_profile_id_seq OWNED BY user_profile.id;
 SELECT setval('user_profile_id_seq', coalesce(max(id), 0) + 1, false) FROM user_profile;
 ALTER TABLE user_profile ALTER COLUMN id SET DEFAULT nextval('user_profile_id_seq'); 
 	-- CRIA UM CAMPO PARA O TIPO DE PERFIL (MEMBRO/PAGINA)
