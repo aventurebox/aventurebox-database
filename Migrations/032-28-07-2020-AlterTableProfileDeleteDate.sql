@@ -61,4 +61,4 @@ grant update on all tables in schema public to "aventurebox";
 grant delete on all tables in schema public to "aventurebox";
 grant all privileges on all sequences in schema public to "aventurebox";
 
-INSERT INTO migration VALUES(31,'Altera a tabela user_profile para registro da data de solicitao de exclusao do perfil','2020-07-28', now());
+INSERT INTO migration VALUES(32,'Altera a tabela user_profile para registro da data de solicitao de exclusao do perfil','2020-07-28', now());
