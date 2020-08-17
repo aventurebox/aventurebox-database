@@ -9,6 +9,9 @@ ALTER TABLE adventure_participant ALTER COLUMN approved SET DEFAULT FALSE;
 
 INSERT INTO notification_type(id, name) VALUES (11, 'new_post'), (12, 'participant_approved'), (13, 'participant_denied');
 
+-- Altera as notificacoes de participação existentes para o TIPO 12 (Participacao Aprovada);
+UPDATE notification SET id_type = 12 WHERE id_type = 8;
+
 grant select on all tables in schema public to "aventurebox";
 grant insert on all tables in schema public to "aventurebox";
 grant update on all tables in schema public to "aventurebox";
