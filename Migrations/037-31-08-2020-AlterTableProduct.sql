@@ -5,7 +5,7 @@
 */
 
 ALTER TABLE product ADD COLUMN owner_name VARCHAR(125);
-ALTER TABLE product ADD COLUMN owner_link VARCHAR(500);
+ALTER TABLE product ADD COLUMN owner_url VARCHAR(500);
 ALTER TABLE product ADD COLUMN id_user INT;
 
 ALTER TABLE product ADD CONSTRAINT product_id_user_fkey FOREIGN KEY (id_user) REFERENCES user_profile (id) ON DELETE CASCADE;
