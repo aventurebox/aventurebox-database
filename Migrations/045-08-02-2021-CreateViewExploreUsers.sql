@@ -23,12 +23,12 @@ AND user_profile.suspended = FALSE
 ORDER BY rox_count DESC, user_profile.id DESC;
 CREATE UNIQUE INDEX ON explore_users_view (id);
 
-ALTER MATERIALIZED VIEW explore_users_view OWNER TO "user-production"
+ALTER MATERIALIZED VIEW explore_users_view OWNER TO "aventurebox"
 
-grant select on all tables in schema public to "user-production";
-grant insert on all tables in schema public to "user-production";
-grant update on all tables in schema public to "user-production";
-grant delete on all tables in schema public to "user-production";
-grant all privileges on all sequences in schema public to "user-production";
+grant select on all tables in schema public to "aventurebox";
+grant insert on all tables in schema public to "aventurebox";
+grant update on all tables in schema public to "aventurebox";
+grant delete on all tables in schema public to "aventurebox";
+grant all privileges on all sequences in schema public to "aventurebox";
 
 INSERT INTO migration VALUES(45, 'Cria View Para Explorar Usuarios', '2021-2-8', now());
