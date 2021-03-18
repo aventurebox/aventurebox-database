@@ -5,10 +5,9 @@
 */
 
 CREATE TABLE adventure_suggestion (
-	id SERIAL NOT NULL PRIMARY KEY,
 	id_adventure INT NOT NULL,
 	dt_add TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	UNIQUE(id, id_adventure),
+	UNIQUE(id_adventure),
 	FOREIGN KEY(id_adventure) REFERENCES adventure(id) ON DELETE CASCADE
 );
 
@@ -63,12 +62,12 @@ SELECT * FROM (
 
 CREATE UNIQUE INDEX ON adventure_suggestion_view (id);
 
-ALTER MATERIALIZED VIEW adventure_suggestion_view OWNER TO "aventurebox"
+ALTER MATERIALIZED VIEW adventure_suggestion_view OWNER TO "user-production"
 
-grant select on all tables in schema public to "aventurebox";
-grant insert on all tables in schema public to "aventurebox";
-grant update on all tables in schema public to "aventurebox";
-grant delete on all tables in schema public to "aventurebox";
-grant all privileges on all sequences in schema public to "aventurebox";
+grant select on all tables in schema public to "user-production";
+grant insert on all tables in schema public to "user-production";
+grant update on all tables in schema public to "user-production";
+grant delete on all tables in schema public to "user-production";
+grant all privileges on all sequences in schema public to "user-production";
 
 INSERT INTO migration VALUES(46, 'Cria View Para Aventuras Sugeridas', '2021-2-25', now());
