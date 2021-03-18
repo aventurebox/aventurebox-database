@@ -41,7 +41,7 @@ ORDER BY us.first DESC, random();
 
 CREATE UNIQUE INDEX ON user_suggestion_view(id);
 
-ALTER MATERIALIZED VIEW adventure_suggestion_view OWNER TO "aventurebox";
+ALTER MATERIALIZED VIEW user_suggestion_view OWNER TO "aventurebox";
 
 
 -- CRIA COLUNA PARA SALVAR O ONBOARDING DO USUARIO
