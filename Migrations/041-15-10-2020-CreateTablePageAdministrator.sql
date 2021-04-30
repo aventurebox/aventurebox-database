@@ -116,7 +116,7 @@ grant all privileges on all sequences in schema public to "aventurebox";
 
 INSERT INTO migration VALUES(41, 'Cria tabela de administradores das paginas e log', '2020-10-15', now());
 
---------------- AVENTUREBOX ANALYTICS MIGRATION --------------------
+--------------- AVENTUREBOX LOG MIGRATION --------------------
 
 CREATE TABLE user_page_admin_log (
 	id BIGSERIAL NOT NULL PRIMARY KEY,

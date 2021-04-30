@@ -23,7 +23,7 @@ AND user_profile.suspended = FALSE
 ORDER BY rox_count DESC, user_profile.id DESC;
 CREATE UNIQUE INDEX ON explore_users_view (id);
 
-ALTER MATERIALIZED VIEW explore_users_view OWNER TO "aventurebox"
+ALTER MATERIALIZED VIEW explore_users_view OWNER TO "aventurebox";
 
 grant select on all tables in schema public to "aventurebox";
 grant insert on all tables in schema public to "aventurebox";

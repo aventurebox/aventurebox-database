@@ -15,7 +15,7 @@ grant all privileges on all sequences in schema public to "aventurebox";
 
 INSERT INTO migration VALUES(44, 'Altera tamanho da coluna origin product_event_log', '2021-1-18', now());
 
---------------- AVENTUREBOX LOG MIGRATION --------------------
+--------------- AVENTUREBOX ANALYTICS MIGRATION --------------------
 
 ALTER TABLE product_event_log ALTER COLUMN origin TYPE VARCHAR(200);
 
