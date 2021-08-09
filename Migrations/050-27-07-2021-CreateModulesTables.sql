@@ -27,7 +27,7 @@ FOREIGN KEY(id_module) REFERENCES modules(id) ON DELETE CASCADE
 
 ALTER TABLE product ADD COLUMN situation VARCHAR(40) NOT NULL DEFAULT 'pending';
 ALTER TABLE product ADD COLUMN id_user_profile_module INT;
-ALTER TABLE product ADD COLUMN picture VARCHAR(20);
+ALTER TABLE product ADD COLUMN picture VARCHAR(100);
 
 grant select on all tables in schema public to "user-production";
 grant insert on all tables in schema public to "user-production";
