@@ -95,6 +95,34 @@ INSERT INTO post_comment_mention_log(type_log,dt_log,id_post_comment,id_user,dat
 	$BODY$;
 CREATE TRIGGER tg_post_comment_mention_delete AFTER DELETE ON post_comment_mention FOR EACH ROW EXECUTE PROCEDURE fn_post_comment_mention_delete();
 
+CREATE FUNCTION fn_adventure_comment_update()
+	RETURNS trigger
+	LANGUAGE 'plpgsql'
+	COST 100
+	VOLATILE NOT LEAKPROOF 
+AS $BODY$
+BEGIN
+INSERT INTO adventure_comment_log(type_log,data_log,id_comment,id_adventure,id_user,text,publication)
+	VALUES (2,NOW(),old.id,old.id_adventure,old.id_user,old.text,old.publication);
+	return old;
+	END; 
+	$BODY$;
+CREATE TRIGGER tg_adventure_comment_update AFTER UPDATE ON adventure_comment FOR EACH ROW EXECUTE PROCEDURE fn_adventure_comment_update();
+
+CREATE FUNCTION fn_post_comment_update()
+	RETURNS trigger
+	LANGUAGE 'plpgsql'
+	COST 100
+	VOLATILE NOT LEAKPROOF 
+AS $BODY$
+BEGIN
+INSERT INTO post_comment_log(type_log,dt_log,id_comment,id_post,id_user,text,publication)
+	VALUES (2,NOW(),old.id,old.id_post,old.id_user,old.text,old.publication);
+	return old;
+	END; 
+	$BODY$;
+CREATE TRIGGER tg_post_comment_update AFTER UPDATE ON post_comment FOR EACH ROW EXECUTE PROCEDURE fn_post_comment_update();
+
 grant select on all tables in schema public to "user-production";
 grant insert on all tables in schema public to "user-production";
 grant update on all tables in schema public to "user-production";
