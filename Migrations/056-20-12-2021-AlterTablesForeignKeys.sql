@@ -118,6 +118,9 @@ ADD CONSTRAINT product_modality_id_product_fkey FOREIGN KEY (id_product) REFEREN
 
 
 ------------------------------------- USER PROFILE -------------------------------------
+ALTER TABLE public.user_profile DROP CONSTRAINT user_profile_id_user_login_fkey,
+ADD CONSTRAINT user_profile_id_user_login_fkey FOREIGN KEY (id_user_login) REFERENCES public.user_login(id) ON DELETE CASCADE;
+
 ALTER TABLE public.advertising DROP CONSTRAINT advertising_id_user_fkey,
 ADD CONSTRAINT advertising_id_user_fkey FOREIGN KEY (id_user) REFERENCES public.user_profile(id) ON DELETE CASCADE;
 
