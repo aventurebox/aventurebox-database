@@ -78,7 +78,7 @@ INSERT INTO post_tag_profile_log(type_log,dt_log,id_post,id_user,notified,show_p
 	return old;
 	END; 
 	$BODY$;
-CREATE TRIGGER tg_post_tag_profile_update AFTER DELETE ON post_tag_profile FOR EACH ROW EXECUTE PROCEDURE fn_post_tag_profile_update();
+CREATE TRIGGER tg_post_tag_profile_update AFTER UPDATE ON post_tag_profile FOR EACH ROW EXECUTE PROCEDURE fn_post_tag_profile_update();
 
 grant select on all tables in schema public to "user-production";
 grant insert on all tables in schema public to "user-production";
