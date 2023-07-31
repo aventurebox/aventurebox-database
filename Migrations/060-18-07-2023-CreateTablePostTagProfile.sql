@@ -59,8 +59,8 @@ CREATE FUNCTION fn_post_tag_profile_delete()
 	VOLATILE NOT LEAKPROOF 
 AS $BODY$
 BEGIN
-INSERT INTO post_tag_profile_log(type_log,dt_log,id_post,id_user,notified,show_profile,approved,date)
-	VALUES (3,NOW(),old.id_post,old.id_user,old.notified,old.show_profile,old.approved,old.date);
+INSERT INTO post_tag_profile_log(type_log,dt_log,id_post,id_user,notified,show_profile,approved)
+	VALUES (3,NOW(),old.id_post,old.id_user,old.notified,old.show_profile,old.approved);
 	return old;
 	END; 
 	$BODY$;
@@ -73,8 +73,8 @@ CREATE FUNCTION fn_post_tag_profile_update()
 	VOLATILE NOT LEAKPROOF 
 AS $BODY$
 BEGIN
-INSERT INTO post_tag_profile_log(type_log,dt_log,id_post,id_user,notified,show_profile,approved,date)
-	VALUES (2,NOW(),old.id_post,old.id_user,old.notified,old.show_profile,old.approved,old.date);
+INSERT INTO post_tag_profile_log(type_log,dt_log,id_post,id_user,notified,show_profile,approved)
+	VALUES (2,NOW(),old.id_post,old.id_user,old.notified,old.show_profile,old.approved);
 	return old;
 	END; 
 	$BODY$;
