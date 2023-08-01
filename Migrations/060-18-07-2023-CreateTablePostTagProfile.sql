@@ -15,12 +15,6 @@ CREATE TABLE post_tag_profile_log(
 	type_log INTEGER,
 	dt_log TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-grant select on all tables in schema public to "user-production";
-grant insert on all tables in schema public to "user-production";
-grant update on all tables in schema public to "user-production";
-grant delete on all tables in schema public to "user-production";
-grant all privileges on all sequences in schema public to "user-production";
 --------------- END AVENTUREBOX LOG --------------------
 
 --------------- AVENTUREBOX --------------------
