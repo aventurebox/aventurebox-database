@@ -145,6 +145,11 @@ SELECT * FROM (
 ) adventures;
 CREATE UNIQUE INDEX ON adventure_suggestion_view (id);
 
+ALTER MATERIALIZED VIEW explore_users_view OWNER TO "user-production";
+ALTER MATERIALIZED VIEW user_suggestion_view OWNER TO "user-production";
+ALTER MATERIALIZED VIEW adventure_suggestion_view OWNER TO "user-production";
+ALTER MATERIALIZED VIEW post_suggestion_view OWNER TO "user-production";
+
 grant select on all tables in schema public to "user-production";
 grant insert on all tables in schema public to "user-production";
 grant update on all tables in schema public to "user-production";
